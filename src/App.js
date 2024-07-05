@@ -7,20 +7,18 @@ import './App.css'
 
 function App() {
   const mockMovies = movieData.movies
+  const singleMovieDetails = singleMovieData.movie
   const [movies, setMovies] = useState(mockMovies)
-
-  function displayMovieDetails(){
-    const singleMovieDetails = singleMovieData.movie
-    return (
-      <Modal singleMovieDetails={singleMovieDetails}/>
-    )
+  const [showModal, setShowModal] = useState(false)
+  function toggleOpen(){
+    setShowModal(!showModal)
   }
-
   return (
     <div>
         <Header />
         {movies.length === 0 && <h2>Couldn't display movies..</h2>}
-        <Movies movies={movies} displayMovieDetails={displayMovieDetails}/>
+        <Movies movies={movies} displayMovieDetails={toggleOpen}/>
+        {showModal && <Modal singleMovieDetails={singleMovieDetails}/>}
     </div>
   )
 }
