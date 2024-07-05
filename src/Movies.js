@@ -1,7 +1,6 @@
 import Card from './Card'
 
 export default function Movies({movies, displayMovieDetails}) {
-  console.log("MOVIES: ", movies)
     const allMovies = movies.map(({id, poster_path, release_date,title, average_rating}) => {
     return <Card
     key={id}

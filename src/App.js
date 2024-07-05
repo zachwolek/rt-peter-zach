@@ -1,7 +1,8 @@
-import movieData from './movieData'
+import {movieData, singleMovieData} from './movieData'
+import { useState } from 'react'
 import Movies from './Movies'
 import Header from './Header'
-import { useState } from 'react'
+import Modal from './Modal'
 import './App.css'
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
   const [movies, setMovies] = useState(mockMovies)
 
   function displayMovieDetails(){
-    
+    const singleMovieDetails = singleMovieData.movie
+    return (
+      <Modal singleMovieDetails={singleMovieDetails}/>
+    )
   }
 
   return (
@@ -22,3 +26,4 @@ function App() {
 }
 
 export default App
+

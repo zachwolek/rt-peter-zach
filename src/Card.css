@@ -1,0 +1,32 @@
+.card {
+    border: 1px solid black;
+    margin: 10px;
+    width: 200px;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    margin: 0px;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin: 5px;
+}
+
+.card p {
+    font-size: 18px;
+    margin: 5px;
+}
+
+.card button {
+    width: 100%;
+    margin: 0px;
+    margin-top: auto;
+}
