@@ -1,0 +1,27 @@
+.modal {
+    height: 75vh;
+    width: 75vw;
+    align-content: center;
+    img {
+        aspect-ratio: 16/9;
+        width: fit-content;
+    }
+}
+
+dialog::backdrop {
+    background-color: grey;
+}
+.genres {
+    border-radius: 5px;
+}
+.movie-info-wrapper {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    .movie-card-info {
+        background: rgba(255,255,255,0.5);
+        backdrop-filter: blur(20px);
+        height: 10vh;
+        width: 10vw;
+    }
+}

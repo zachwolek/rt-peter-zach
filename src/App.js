@@ -1,16 +1,27 @@
-import movieData from './movieData'
+import {movieData, singleMovieData} from './movieData'
+import { useState } from 'react'
 import Movies from './Movies'
 import Header from './Header'
+import Modal from './Modal'
 import './App.css'
 
 function App() {
-  const movies = movieData.movies
+  const mockMovies = movieData.movies
+  const singleMovieDetails = singleMovieData.movie
+  const [movies, setMovies] = useState(mockMovies)
+  const [showModal, setShowModal] = useState(false)
+  function toggleOpen(){
+    setShowModal(!showModal)
+  }
   return (
     <div>
         <Header />
-        <Movies movies={movies}/>
+        {movies.length === 0 && <h2>Couldn't display movies..</h2>}
+        <Movies movies={movies} displayMovieDetails={toggleOpen}/>
+        {showModal && <Modal singleMovieDetails={singleMovieDetails}/>}
     </div>
   )
 }
 
 export default App
+
