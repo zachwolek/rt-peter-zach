@@ -1,7 +1,7 @@
 import './Modal.css'
+import './App.css'
 export default function Modal({singleMovieDetails,setShowModal}){
-    console.log(singleMovieDetails.singleMovieDetails)
-    const {backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
+    const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
     console.log(backdrop_path)
     const allGenres = genres.map(genre => {
         return (
@@ -11,24 +11,29 @@ export default function Modal({singleMovieDetails,setShowModal}){
     return (
         <dialog data-modal class="modal" open>
             <img src={backdrop_path}/>
-            <div className="genres">
-                {allGenres}
-            </div>
-            <div className="movie-info-wrapper">
-             <div className='movie-card-info'>
-                    revenue: {revenue}
-                </div>
-                <div className='movie-card-info'>
-                    budget: {budget}
-                </div>
-                <div className='movie-card-info'>
-                    runtime: {runtime}
-                </div>
-                <div className='movie-card-info'>
-                    average rating: {average_rating}/10
+            <div className='title-genre-wrapper'>
+                <h2>{title}</h2>
+                <div className="genres">
+                    {allGenres}
                 </div>
             </div>
-            <button data-close modal formmethod='dialog' onClick={()=>setShowModal(false)}>Close</button>
+            <div className='movie-cards-button-wrapper'>
+                <div className="movie-info-wrapper">
+                <div className='movie-card-info'>
+                        revenue: {revenue}
+                    </div>
+                    <div className='movie-card-info'>
+                        budget: {budget}
+                    </div>
+                    <div className='movie-card-info'>
+                        runtime: {runtime}
+                    </div>
+                    <div className='movie-card-info'>
+                        average rating: {average_rating}/10
+                    </div>
+                </div>
+            <button className='button-close' data-close modal formmethod='dialog' onClick={()=>setShowModal(false)}>Close</button>
+            </div>
         </dialog>
     )
 }
