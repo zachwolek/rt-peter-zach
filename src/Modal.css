@@ -1,10 +1,11 @@
 .modal {
     height: 75vh;
-    width: 75vw;
+    width: 50vw;
     align-content: center;
     img {
+        align-self: center;
         aspect-ratio: 16/9;
-        width: fit-content;
+        width: 500px;
     }
 }
 
@@ -13,12 +14,22 @@ dialog::backdrop {
 }
 .genres {
     border-radius: 5px;
+    border: 2px solid black;
+    .genre {
+        outline-color: red;
+        outline-width: 2px;
+        width: fit-content;
+        border: fit-content;
+        border-color: red;
+    }
 }
 .movie-info-wrapper {
     display: flex;
     gap: 10px;
     justify-content: space-evenly;
+    background: coral;
     .movie-card-info {
+        border: 2px solid black;
         background: rgba(255,255,255,0.5);
         backdrop-filter: blur(20px);
         height: 10vh;

@@ -1,6 +1,6 @@
 import Card from './Card'
 
-export default function Movies({movies, handleOpen}) {
+export default function Movies({movies, toggleOpen}) {
     const allMovies = movies.map(({id, poster_path, release_date,title, average_rating}) => {
     return <Card
     key={id}
@@ -8,7 +8,7 @@ export default function Movies({movies, handleOpen}) {
     release_date={release_date}
     title={title}
     average_rating={average_rating}
-    displayMovieDetails={handleOpen}
+    toggleOpen={toggleOpen}
     />
   })
   return (

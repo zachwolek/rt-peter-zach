@@ -1,28 +1,34 @@
 import './Modal.css'
-export default function Modal({backdrop_path, release_date, overview ,genres, budget, revenue, runtime}) {
+export default function Modal({singleMovieDetails,setShowModal}){
+    console.log(singleMovieDetails.singleMovieDetails)
+    const {backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
+    console.log(backdrop_path)
     const allGenres = genres.map(genre => {
         return (
-            <p>{genre}</p>
+            <div className='genre'>{genre}</div>
         )
     })
     return (
-        <dialog data-modal class="modal">
+        <dialog data-modal class="modal" open>
             <img src={backdrop_path}/>
             <div className="genres">
                 {allGenres}
             </div>
             <div className="movie-info-wrapper">
-                <div className='movie-card-info'>
-                    {budget}
+             <div className='movie-card-info'>
+                    revenue: {revenue}
                 </div>
                 <div className='movie-card-info'>
-                    {revenue}
+                    budget: {budget}
                 </div>
                 <div className='movie-card-info'>
-                    {runtime}
+                    runtime: {runtime}
+                </div>
+                <div className='movie-card-info'>
+                    average rating: {average_rating}/10
                 </div>
             </div>
-            <button data-close modal formmethod='dialog'>Close</button>
+            <button data-close modal formmethod='dialog' onClick={()=>setShowModal(false)}>Close</button>
         </dialog>
     )
 }
