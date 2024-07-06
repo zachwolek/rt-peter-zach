@@ -1,8 +1,10 @@
 import './Modal.css'
 import './App.css'
 export default function Modal({singleMovieDetails,setShowModal}){
+    console.log("SINGLE MOVIE DETAILS: ",singleMovieDetails)
     const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
-    console.log(backdrop_path)
+    console.log("GENRES DECONSTRUCTED: ", genres)
+    console.log("TITLE DECONSTRUCTED: ", title)
     const allGenres = genres.map(genre => {
         return (
             <div className='genre'>{genre}</div>
@@ -50,4 +52,4 @@ export default function Modal({singleMovieDetails,setShowModal}){
 //     revenue:100853753, 
 //     runtime:139, 
 //     tagline: "It's a movie!" }
-// }
+// } 

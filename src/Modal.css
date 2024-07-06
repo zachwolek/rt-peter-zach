@@ -6,6 +6,7 @@
     img {
         aspect-ratio: 16/9;
         max-width: 100%;
+        opacity: 0.85;
     }
     h2 {
         margin: 0;
@@ -25,12 +26,14 @@ dialog::backdrop {
 }
 .genres {
     border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
     .genre {
         color: black;
         width: fit-content;
         padding: 10px 15px;
         border-radius: 5px;
-        background: var(--primary-color);
+        background-color: rgb(var(--primary-color));
         margin: 10px 0 0px 0;
     }
 }
@@ -47,7 +50,7 @@ dialog::backdrop {
     .movie-card-info {
         border: 2px solid black;
         border-radius: 5px;
-        background: var(--primary-color);
+        background-color: rgba(var(--primary-color),0.5);
         backdrop-filter: blur(20px);
         height: 10vh;
         width: 10vw;
@@ -57,7 +60,7 @@ dialog::backdrop {
 .button-close {
     padding: 10px 15px;
     border-radius: 5px;
-    background: var(--primary-color);
+    background-color: rgb(var(--primary-color));
     margin: 10px 0 0 35px;
     width: fit-content;
 }
