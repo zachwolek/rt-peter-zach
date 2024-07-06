@@ -5,6 +5,8 @@ export default function Modal({singleMovieDetails,setShowModal}){
     const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
     console.log("GENRES DECONSTRUCTED: ", genres)
     console.log("TITLE DECONSTRUCTED: ", title)
+    const shortRevenue = revenue.toString().slice(0,3)
+    const shortBudget = budget.toString().slice(0,3)
     const allGenres = genres.map(genre => {
         return (
             <div className='genre'>{genre}</div>
@@ -21,20 +23,27 @@ export default function Modal({singleMovieDetails,setShowModal}){
             </div>
             <div className='movie-cards-button-wrapper'>
                 <div className="movie-info-wrapper">
-                <div className='movie-card-info'>
-                        revenue: {revenue}
+                    <div className='movie-card-info'>
+                        <h3>Revenue</h3>
+                        ${shortRevenue}M
                     </div>
                     <div className='movie-card-info'>
-                        budget: {budget}
+                    <h3>Budget</h3>
+                        ${shortBudget}M
                     </div>
                     <div className='movie-card-info'>
-                        runtime: {runtime}
+                        <h3>Runtime</h3>
+                        {runtime}m
                     </div>
                     <div className='movie-card-info'>
-                        average rating: {average_rating}/10
+                        <h3> Average Rating</h3>
+                        {average_rating}/10
                     </div>
                 </div>
-            <button className='button-close' data-close modal formmethod='dialog' onClick={()=>setShowModal(false)}>Close</button>
+                <p className='overview'>
+                   Description: {overview}
+                </p>
+            <button className='button-close' data-close modal formmethod='dialog' onClick={()=>setShowModal(false)} autofocus>Close Info</button>
             </div>
         </dialog>
     )
