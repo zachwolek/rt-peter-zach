@@ -50,4 +50,4 @@ export default function Modal({singleMovieDetails,setShowModal}){
 //     revenue:100853753, 
 //     runtime:139, 
 //     tagline: "It's a movie!" }
-// }
+// } 

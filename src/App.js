@@ -5,29 +5,38 @@ import { useState, useEffect } from 'react'
 import Movies from './Movies'
 import Header from './Header'
 import Modal from './Modal'
-import makeAPICall from './APICalls'
+import {getAllMovies, getSingleMovie} from './APICalls'
 
 function App() {
-  const mockMovies = movieData.movies
-  const singleMovieDetails = singleMovieData.movie
+  const singleMovie = singleMovieData.movie
   const [movies, setMovies] = useState([])
   const [showModal, setShowModal] = useState(false)
+  const [singleMovieDetails, setSingleMovieDetails] = useState([])
+  const [error, setError] = useState('')
   function toggleOpen(){
     setShowModal(!showModal)
   }
-
   useEffect(() => {
-    makeAPICall()
-      .then(data => {console.log("TEST API CALL: ", data.movies)
+    getAllMovies()
+    .then((response) => {
+      if(!response.ok) {
+        throw new Error('could not fetch')
+      }
+      return response.json()})
+      .then(data => {
+        console.log(data.movies)
         setMovies(data.movies)
       })
+      .catch(error => {
+        setError(error.message)})
   }, [])
 
   return (
     <div>
         <Header />
-        {movies.length === 0 && <h2>Couldn't display movies..</h2>}
-        {!showModal ? <Movies movies={movies} toggleOpen={toggleOpen}/> : <Modal singleMovieDetails={singleMovieDetails} setShowModal={toggleOpen}/>}
+        {(!error && movies.length === 0) && <h2>Loading...</h2>}
+        {!showModal ? <Movies movies={movies} toggleOpen={toggleOpen} getSingleMovie={getSingleMovie}/> : <Modal singleMovieDetails={singleMovie} setShowModal={toggleOpen}/>}
+        {error && <h2>{error} could not load page</h2>}
     </div>
   )
 }
