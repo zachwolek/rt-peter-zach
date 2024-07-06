@@ -17,8 +17,7 @@ function App() {
     <div>
         <Header />
         {movies.length === 0 && <h2>Couldn't display movies..</h2>}
-        <Movies movies={movies} displayMovieDetails={toggleOpen}/>
-        {showModal && <Modal singleMovieDetails={singleMovieDetails}/>}
+        {!showModal ? <Movies movies={movies} toggleOpen={toggleOpen}/> : <Modal singleMovieDetails={singleMovieDetails} setShowModal={toggleOpen}/>}
     </div>
   )
 }
