@@ -26,6 +26,8 @@ dialog::backdrop {
 }
 .genres {
     border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
     .genre {
         color: black;
         width: fit-content;

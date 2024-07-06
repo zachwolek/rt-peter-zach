@@ -1,6 +1,6 @@
 import Card from './Card'
 import './Movies.css'
-export default function Movies({movies, toggleOpen, getSingleMovie}) {
+export default function Movies({movies, toggleOpen, updateSingleMovie}) {
     const allMovies = movies.map(({id, poster_path, release_date,title, average_rating}) => {
     return <Card
     key={id}
@@ -10,7 +10,7 @@ export default function Movies({movies, toggleOpen, getSingleMovie}) {
     title={title}
     average_rating={average_rating}
     toggleOpen={toggleOpen}
-    getSingleMovie={getSingleMovie}
+    updateSingleMovie={updateSingleMovie}
     />
   })
   return (

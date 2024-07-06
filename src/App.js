@@ -1,6 +1,5 @@
 import './App.css'
 import './Variables.css'
-import {movieData, singleMovieData} from './movieData'
 import { useState, useEffect } from 'react'
 import Movies from './Movies'
 import Header from './Header'
@@ -8,11 +7,19 @@ import Modal from './Modal'
 import {getAllMovies, getSingleMovie} from './APICalls'
 
 function App() {
-  const singleMovie = singleMovieData.movie
+
   const [movies, setMovies] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [singleMovieDetails, setSingleMovieDetails] = useState([])
   const [error, setError] = useState('')
+  function updateSingleMovie(id) {
+    getSingleMovie(id)
+    .then(response => response.json())
+    .then(data => {
+      console.log("data.movie: ", data.movie)
+      setSingleMovieDetails(data.movie)})
+    .catch(error => setError(error.message))
+}
   function toggleOpen(){
     setShowModal(!showModal)
   }
@@ -35,7 +42,7 @@ function App() {
     <div>
         <Header />
         {(!error && movies.length === 0) && <h2>Loading...</h2>}
-        {!showModal ? <Movies movies={movies} toggleOpen={toggleOpen} getSingleMovie={getSingleMovie}/> : <Modal singleMovieDetails={singleMovie} setShowModal={toggleOpen}/>}
+        {!showModal ? <Movies movies={movies} toggleOpen={toggleOpen} updateSingleMovie={updateSingleMovie}/> : <Modal singleMovieDetails={singleMovieDetails} setShowModal={toggleOpen}/>}
         {error && <h2>{error} could not load page</h2>}
     </div>
   )
