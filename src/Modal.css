@@ -1,6 +1,6 @@
 .modal {
     background: var(--background-color);
-    height: 75vh;
+    height: 80vh;
     width: 50vw;
     align-content: center;
     img {
@@ -11,30 +11,33 @@
     h2 {
         margin: 0;
         font-size: 50px;
-       
+        text-shadow: 0px 0px 3px var(--primary-color);
         color: #FFFFFF;
     }
-    backdrop-filter: blur(20px);
     padding: 0;
 }
 
-dialog::backdrop {
-    background-color:hsl(234, 44%, 66%, .2);
-}
+/* dialog::backdrop {
+    background:salmon;
+} */
 .title-genre-wrapper {
-    transform: translate(5%,-200%);
+    transform: translateY(-150%);
+    width: fit-content;
+    margin-left: 30px;
 }
 .genres {
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
+    gap: 5px;
     .genre {
         color: black;
         width: fit-content;
         padding: 10px 15px;
         border-radius: 5px;
-        background-color: rgb(var(--primary-color));
+        background-color: rgba(var(--primary-color),0.8);
         margin: 10px 0 0px 0;
+        backdrop-filter: blur(20px);
     }
 }
 .movie-cards-button-wrapper {
@@ -42,28 +45,28 @@ dialog::backdrop {
     flex-direction: column;
     justify-content: flex-start;
     transform: translateY(-50%);
+    margin: 30px;
 }
 .movie-info-wrapper {
     display: flex;
     gap: 10px;
-    justify-content: space-evenly;
+    justify-content: space-between;
     .movie-card-info {
-        border: 2px solid black;
         border-radius: 5px;
-        background-color: rgba(var(--primary-color),0.5);
+        background-color: rgba(var(--primary-color),0.8);
         backdrop-filter: blur(20px);
         height: 10vh;
-        width: 10vw;
+        width: 8vw;
         text-align: center;
     }
 }
 .button-close {
     padding: 10px 15px;
     border-radius: 5px;
-    background-color: rgb(var(--primary-color));
-    margin: 10px 0 0 35px;
+    background-color: rgba(var(--primary-color),0.8);
     width: fit-content;
 }
 .button-close:hover {
     cursor: pointer;
+    background-color: rgba(var(--primary-color),1);
 }
