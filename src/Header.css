@@ -1,0 +1,14 @@
+nav {
+    width: 100%;
+    background-color: #F7F2D9;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .app-title {
+    color: black;
+    font-weight: bold;
+    font-size: 32px;
+  }
