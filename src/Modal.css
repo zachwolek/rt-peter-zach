@@ -60,6 +60,9 @@
         text-align: center;
     }
 }
+.overview {
+    line-height: 1.35;
+}
 .button-close {
     padding: 10px 15px;
     border-radius: 5px;
