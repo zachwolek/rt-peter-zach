@@ -4,7 +4,7 @@ import Movies from './Movies'
 import Header from './Header'
 import Modal from './Modal'
 import './App.css'
-
+import './Variables.css'
 function App() {
   const mockMovies = movieData.movies
   const singleMovieDetails = singleMovieData.movie

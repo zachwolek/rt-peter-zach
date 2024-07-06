@@ -1,38 +1,66 @@
 .modal {
+    background: var(--background-color);
     height: 75vh;
     width: 50vw;
     align-content: center;
     img {
-        align-self: center;
         aspect-ratio: 16/9;
-        width: 500px;
+        max-width: 100%;
     }
+    h2 {
+        margin: 0;
+        font-size: 50px;
+       
+        color: #FFFFFF;
+    }
+    backdrop-filter: blur(20px);
+    padding: 0;
 }
 
 dialog::backdrop {
-    background-color: grey;
+    background-color:hsl(234, 44%, 66%, .2);
+}
+.title-genre-wrapper {
+    transform: translate(5%,-200%);
 }
 .genres {
     border-radius: 5px;
-    border: 2px solid black;
     .genre {
-        outline-color: red;
-        outline-width: 2px;
+        color: black;
         width: fit-content;
-        border: fit-content;
-        border-color: red;
+        padding: 10px 15px;
+        border-radius: 5px;
+        background: var(--primary-color);
+        margin: 10px 0 0px 0;
     }
+}
+.movie-cards-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translateY(-50%);
 }
 .movie-info-wrapper {
     display: flex;
     gap: 10px;
     justify-content: space-evenly;
-    background: coral;
     .movie-card-info {
         border: 2px solid black;
-        background: rgba(255,255,255,0.5);
+        border-radius: 5px;
+        background: var(--primary-color);
         backdrop-filter: blur(20px);
         height: 10vh;
         width: 10vw;
+        text-align: center;
     }
+}
+.button-close {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background: var(--primary-color);
+    margin: 10px 0 0 35px;
+    width: fit-content;
+}
+.button-close:hover {
+    cursor: pointer;
 }
