@@ -17,7 +17,8 @@ function App() {
     .then(response => response.json())
     .then(data => {
       console.log("data.movie: ", data.movie)
-      setSingleMovieDetails(data.movie)})
+      setSingleMovieDetails(data.movie)
+      toggleOpen()})
     .catch(error => setError(error.message))
 }
   function toggleOpen(){
