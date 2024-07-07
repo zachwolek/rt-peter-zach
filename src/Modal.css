@@ -1,69 +1,84 @@
 .modal {
     background: var(--background-color);
-    height: 75vh;
-    width: 50vw;
+    max-height: 90%;
+    max-width: 55vw;
     align-content: center;
     img {
-        aspect-ratio: 16/9;
-        max-width: 100%;
+        width: 100%;
         opacity: 0.85;
     }
     h2 {
         margin: 0;
         font-size: 50px;
-       
+        text-shadow: 0px 0px 5px black;
         color: #FFFFFF;
     }
-    backdrop-filter: blur(20px);
     padding: 0;
+    border: none;
 }
 
-dialog::backdrop {
-    background-color:hsl(234, 44%, 66%, .2);
-}
 .title-genre-wrapper {
-    transform: translate(5%,-200%);
+    position: relative;
+    width: fit-content;
+    margin-left: 30px;
+    bottom: 180px;
 }
 .genres {
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
+    gap: 10px;
     .genre {
         color: black;
         width: fit-content;
         padding: 10px 15px;
         border-radius: 5px;
-        background-color: rgb(var(--primary-color));
+        background-color: rgba(var(--primary-color),0.8);
         margin: 10px 0 0px 0;
+        backdrop-filter: blur(20px);
     }
 }
-.movie-cards-button-wrapper {
+.movie-cards-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    transform: translateY(-50%);
+    margin: 20px 20px 0 20px;
+    position: relative;
+    bottom: 150px;
 }
 .movie-info-wrapper {
     display: flex;
     gap: 10px;
-    justify-content: space-evenly;
+    justify-content: space-between;
     .movie-card-info {
-        border: 2px solid black;
         border-radius: 5px;
-        background-color: rgba(var(--primary-color),0.5);
+        background-color: rgba(var(--primary-color),0.8);
         backdrop-filter: blur(20px);
-        height: 10vh;
-        width: 10vw;
+        height: 12vh;
+        width: 8vw;
         text-align: center;
+        .movie-card-text {
+            letter-spacing: .1rem;
+            font-weight: 600;
+        }
     }
 }
+.overview {
+    line-height: 1.25;
+    margin-bottom: 5px;
+}
 .button-close {
-    padding: 10px 15px;
+    position: sticky;
+    bottom: 93%;
+    left: 93%;
+    border: none;
+    padding: 8px 20px;
     border-radius: 5px;
-    background-color: rgb(var(--primary-color));
-    margin: 10px 0 0 35px;
+    font-size: 20px;
+    background-color: rgba(var(--primary-color),0.8);
     width: fit-content;
 }
 .button-close:hover {
     cursor: pointer;
+    background-color: rgba(var(--primary-color),1);
 }
