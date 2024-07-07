@@ -1,5 +1,6 @@
 import './Modal.css'
 import './App.css'
+
 export default function Modal({singleMovieDetails,setShowModal}){
     console.log("SINGLE MOVIE DETAILS: ",singleMovieDetails)
     const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
@@ -7,6 +8,7 @@ export default function Modal({singleMovieDetails,setShowModal}){
     console.log("TITLE DECONSTRUCTED: ", title)
     const shortRevenue = revenue.toString().slice(0,3)
     const shortBudget = budget.toString().slice(0,3)
+    const altText = 'Poster of ' + title
     const allGenres = genres.map(genre => {
         return (
             <div className='genre'>{genre}</div>
@@ -14,37 +16,40 @@ export default function Modal({singleMovieDetails,setShowModal}){
     })
     return (
         <dialog data-modal class="modal" open>
-            <img src={backdrop_path}/>
+            <div className='image-button-wrapper'>
+                <img src={backdrop_path} alt={altText}/>
+                <button className='button-close' data-close modal formmethod='dialog' onClick={()=>setShowModal(false)} autofocus>X</button>
+            </div>
             <div className='title-genre-wrapper'>
                 <h2>{title}</h2>
                 <div className="genres">
                     {allGenres}
                 </div>
             </div>
-            <div className='movie-cards-button-wrapper'>
+            <div className='movie-cards-wrapper'>
                 <div className="movie-info-wrapper">
                     <div className='movie-card-info'>
                         <h3>Revenue</h3>
-                        ${shortRevenue}M
+                        <p className='movie-card-text'>${shortRevenue}M</p>
                     </div>
                     <div className='movie-card-info'>
                     <h3>Budget</h3>
-                        ${shortBudget}M
+                    <p className='movie-card-text'>${shortBudget}M</p>
                     </div>
                     <div className='movie-card-info'>
                         <h3>Runtime</h3>
-                        {runtime}m
+                        <p className='movie-card-text'>{runtime} min</p>
                     </div>
                     <div className='movie-card-info'>
-                        <h3> Average Rating</h3>
-                        {average_rating}/10
+                        <h3> Rating</h3>
+                        <p className='movie-card-text'>{average_rating}/10</p>
                     </div>
                 </div>
                 <p className='overview'>
                    Description: {overview}
                 </p>
-            <button className='button-close' data-close modal formmethod='dialog' onClick={()=>setShowModal(false)} autofocus>Close Info</button>
             </div>
+           
         </dialog>
     )
 }
