@@ -1,6 +1,9 @@
 import './Card.css'
 import moment from 'moment'
-export default function Card({id, img, release_date, title, average_rating, toggleOpen, updateSingleMovie}) {
+import PropTypes from 'prop-types';
+
+export default function Card({id, img, release_date, title, average_rating, updateSingleMovie}) {
+    
     return (
         <div className='card' key={id}>
             <img src={img} alt={title}/>
@@ -13,4 +16,13 @@ export default function Card({id, img, release_date, title, average_rating, togg
                }}>See Movie Details</button>
         </div>
     )
+}
+
+Card.propTypes = {
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    average_rating: PropTypes.number.isRequired,
+    updateSingleMovie: PropTypes.func.isRequired
 }
