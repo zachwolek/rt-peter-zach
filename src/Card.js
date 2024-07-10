@@ -1,7 +1,7 @@
 import './Card.css'
 import moment from 'moment'
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 export default function Card({id, img, release_date, title, average_rating, updateSingleMovie}) {
     let coloredCard;
     if (average_rating >= 7) {
@@ -19,10 +19,12 @@ export default function Card({id, img, release_date, title, average_rating, upda
             <h2>{title}</h2>
             <p>Released: {moment(release_date).format('MMM YYYY')}</p>
             <p className='average_rating'>Rating: {average_rating.toFixed(1)}/10</p>
-            <button onClick={()=> {
-                console.log("ID CLICK", id)
-                updateSingleMovie(id)
-               }}>See Movie Details</button>
+            <Link to={`/${id}`}>
+                <button onClick={()=> {
+                    console.log("ID CLICK", id)
+                    updateSingleMovie(id)
+                }}>See Movie Details</button>
+            </Link>
         </div>
     )
 }
