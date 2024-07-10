@@ -1,11 +1,16 @@
 import './Modal.css'
 import './App.css'
 import PropTypes from 'prop-types'
-export default function Modal({singleMovieDetails,setShowModal}){
-    console.log("SINGLE MOVIE DETAILS: ",singleMovieDetails)
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+export default function Modal({singleMovieDetails}){
+    const {movie_id} = useParams()
+    if (!singleMovieDetails) {
+        return;
+    }
+
+    console.log("MOVIE_ID: ", movie_id)
     const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
-    console.log("GENRES DECONSTRUCTED: ", genres)
-    console.log("TITLE DECONSTRUCTED: ", title)
     const shortRevenue = revenue.toString().slice(0,3)
     const shortBudget = budget.toString().slice(0,3)
     const altText = 'Poster of ' + title
@@ -15,10 +20,12 @@ export default function Modal({singleMovieDetails,setShowModal}){
         )
     })
     return (
-        <dialog data-modal class="modal" open>
+        <dialog key={movie_id} data-modal class="modal" open>
             <div className='image-button-wrapper'>
                 <img src={backdrop_path} alt={altText}/>
-                <button className='button-close' data-close modal formmethod='dialog' onClick={()=>setShowModal(false)} autofocus>X</button>
+                <Link to='/'>
+                    <button className='button-close' data-close modal formmethod='dialog' autofocus>X</button>
+                </Link>
             </div>
             <div className='title-genre-wrapper'>
                 <h2>{title}</h2>
