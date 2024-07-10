@@ -5,25 +5,22 @@ import Movies from './Movies'
 import Header from './Header'
 import Modal from './Modal'
 import {getAllMovies, getSingleMovie} from './APICalls'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
 
   const [movies, setMovies] = useState([])
-  const [showModal, setShowModal] = useState(false)
-  const [singleMovieDetails, setSingleMovieDetails] = useState([])
+  const [singleMovieDetails, setSingleMovieDetails] = useState(null)
   const [error, setError] = useState('')
   function updateSingleMovie(id) {
     getSingleMovie(id)
     .then(response => response.json())
     .then(data => {
-      console.log("data.movie: ", data.movie)
       setSingleMovieDetails(data.movie)
-      toggleOpen()})
+      })
     .catch(error => setError(error.message))
 }
-  function toggleOpen(){
-    setShowModal(!showModal)
-  }
+
   useEffect(() => {
     getAllMovies()
     .then((response) => {
@@ -32,7 +29,6 @@ function App() {
       }
       return response.json()})
       .then(data => {
-        console.log(data.movies)
         setMovies(data.movies)
       })
       .catch(error => {
@@ -40,12 +36,18 @@ function App() {
   }, [])
 
   return (
-    <div>
-        <Header />
-        {(!error && movies.length === 0) && <h2>Loading...</h2>}
-        {!showModal ? <Movies movies={movies} toggleOpen={toggleOpen} updateSingleMovie={updateSingleMovie}/> : <Modal singleMovieDetails={singleMovieDetails} setShowModal={toggleOpen}/>}
-        {error && <h2>{error} could not load page</h2>}
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={
+          <>
+            <Header />
+            {error && <h2>{error} could not load page</h2>}
+            <Movies movies={movies} updateSingleMovie={updateSingleMovie}/>
+          </>}>
+        </Route>
+        <Route path='/:movie_id' element={<Modal singleMovieDetails={singleMovieDetails}/>}></Route>
+      </Routes>
+    </>
   )
 }
 
