@@ -9,7 +9,6 @@ export default function Modal({singleMovieDetails}){
         return;
     }
 
-    console.log("MOVIE_ID: ", movie_id)
     const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
     const shortRevenue = revenue.toString().slice(0,3)
     const shortBudget = budget.toString().slice(0,3)
