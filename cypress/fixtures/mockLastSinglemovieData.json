@@ -1,0 +1,19 @@
+{
+    "movie": {
+        "id": 982620,
+        "title": "Maneater",
+        "poster_path": "https://image.tmdb.org/t/p/original//pwf3DGuWB1AptvIzHhlGxDUNnQX.jpg",
+        "backdrop_path": "https://image.tmdb.org/t/p/original//jHKNqz0LjM2dOUv5XDPmcSoYPEW.jpg",
+        "release_date": "2022-08-26",
+        "overview": "A group of friends on vacation in a seeming island paradise are stalked by an unrelenting great white after an accident leaves them stranded and left for dead.",
+        "genres": [
+            "Thriller",
+            "Horror"
+        ],
+        "budget": 0,
+        "revenue": 0,
+        "runtime": 86,
+        "tagline": "200 teeth. 0 chance.",
+        "average_rating": 7
+    }
+}
