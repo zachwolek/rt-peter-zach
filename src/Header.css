@@ -11,4 +11,12 @@ nav {
     color: black;
     font-weight: bold;
     font-size: 32px;
+    padding: 0;
+  }
+
+  .forms {
+    margin-left: 30px;
+    button::hover {
+      cursor: pointer;
+    }
   }

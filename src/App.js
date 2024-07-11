@@ -9,16 +9,9 @@ import { Routes, Route } from 'react-router-dom'
 
 function App() {
   const [movies, setMovies] = useState([])
+  const [filteredMovies, setFilteredMovies] = useState([])
   const [singleMovieDetails, setSingleMovieDetails] = useState(null)
   const [error, setError] = useState('')
-  function updateSingleMovie(id) {
-    getSingleMovie(id)
-    .then(response => response.json())
-    .then(data => {
-      setSingleMovieDetails(data.movie)
-      })
-    .catch(error => setError(error.message))
-}
 
   useEffect(() => {
     getAllMovies()
@@ -29,17 +22,28 @@ function App() {
       return response.json()})
       .then(data => {
         setMovies(data.movies)
+        setFilteredMovies(data.movies)
       })
       .catch(error => {
         setError(error.message)})
-  }, [])
-
+      }, [])
+  function updateSingleMovie(id) {
+        getSingleMovie(id)
+        .then(response => response.json())
+        .then(data => {
+          setSingleMovieDetails(data.movie)
+          })
+        .catch(error => setError(error.message))
+    }
+  function updateFilteredMovies(filteredMovies) {
+    setMovies(filteredMovies)
+  }
   return (
     <>
       <Routes>
         <Route path='/' element={
           <>
-            <Header />
+            <Header filteredMovies={filteredMovies} updateFilteredMovies={updateFilteredMovies}/>
             {error && <h2>{error}</h2>}
             <Movies movies={movies} updateSingleMovie={updateSingleMovie}/>
           </>}>
