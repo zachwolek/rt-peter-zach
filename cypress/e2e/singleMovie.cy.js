@@ -1,4 +1,4 @@
-describe('template spec', () => {
+describe('Single movie details tests', () => {
   beforeEach(() => {
     cy.fixture('mockMovieData').then((json) => {
       cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', json)
@@ -39,5 +39,17 @@ describe('template spec', () => {
     .get('.button-close').click()
     .get('.app-title').contains('Rancid Tomatillos')
     .get('.movies-wrapper').get('.card').should('have.length', 10)
+  })
+  it.only('user should be able to use forward/back navigation', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/982620',{
+      statusCode: 200,
+      fixture: 'mockLastSinglemovieData.json'
+    })
+    .get('.card button').last().click()
+    .go("back")
+    .get('.movies-wrapper').get('.card').should('have.length', 10)
+    .go("forward")
+    .get('h2').should('contain.text', 'Maneater')
+    .get('.genres').get('.genre').should('have.length', 2).should('contain.text', "Thriller").should('contain.text', "Horror")
   })
 })
