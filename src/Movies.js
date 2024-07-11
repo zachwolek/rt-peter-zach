@@ -27,7 +27,6 @@ Movies.propTypes = {
   release_date: PropTypes.string.isRequired,
   average_rating: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  toggleOpen: PropTypes.func.isRequired,
   updateSingleMovie: PropTypes.func.isRequired
 }
 //const [viewstate, setViewstate] = useState(false)

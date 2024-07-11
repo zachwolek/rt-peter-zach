@@ -69,5 +69,4 @@ Modal.propTypes = {
     revenue: PropTypes.number.isRequired,
     runtime: PropTypes.number.isRequired,
     average_rating: PropTypes.number.isRequired,
-    setShowModal: PropTypes.func.isRequired
 }

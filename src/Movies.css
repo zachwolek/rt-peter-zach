@@ -1,5 +1,17 @@
 .movies-wrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 10px;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1em;
+    min-width: 50em;
+    margin: 0;
+}
+@media screen and (max-width: 81.25em) {
+    .movies-wrapper {
+        grid-template-columns: repeat(6, 1fr)
+    }
+}
+@media screen and (max-width: 40em) { 
+    .movies-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
