@@ -8,7 +8,6 @@ import {getAllMovies, getSingleMovie} from './APICalls'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
-
   const [movies, setMovies] = useState([])
   const [singleMovieDetails, setSingleMovieDetails] = useState(null)
   const [error, setError] = useState('')
@@ -25,7 +24,7 @@ function App() {
     getAllMovies()
     .then((response) => {
       if(!response.ok) {
-        throw new Error('could not fetch')
+        throw new Error(`HTTP Status Code ${response.status}: ${response.statusText}`)
       }
       return response.json()})
       .then(data => {
@@ -41,7 +40,7 @@ function App() {
         <Route path='/' element={
           <>
             <Header />
-            {error && <h2>{error} could not load page</h2>}
+            {error && <h2>{error}</h2>}
             <Movies movies={movies} updateSingleMovie={updateSingleMovie}/>
           </>}>
         </Route>
