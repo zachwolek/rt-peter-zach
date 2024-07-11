@@ -1,15 +1,17 @@
 .card {
     border: 5px solid black;
     background-color: rgb(var(--primary-color));
-    border-radius: 10px;
-    margin: 10px;
-    width: 200px;
-    height: 430px;
+    border-radius: 1em;
+    margin: 1em;
+    width: 12.5em;
+    height: 26.875em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 div#green {
     border-color: green;
@@ -27,6 +29,7 @@ div#red {
     width: 100%;
     margin: 0px;
     overflow: hidden;
+    transform: translateY(-3%);
 }
 
 .card h2 {
