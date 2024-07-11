@@ -1,22 +1,23 @@
 nav {
     width: 100%;
     background-color: #F7F2D9;
-    padding: 20px 0;
+    padding: 0;
     display: flex;
     justify-content: center; 
     align-items: center; 
   }
 
-  .app-title {
-    color: black;
-    font-weight: bold;
-    font-size: 32px;
-    padding: 0;
-  }
+.app-title {
+  /* position: absolute; */
+  color: black;
+  font-weight: bold;
+  font-size: 50px;
+  padding: 0;
+}
 
-  .forms {
-    margin-left: 30px;
-    button::hover {
-      cursor: pointer;
-    }
+.search-wrapper {
+  margin-left: 10em;
+  button::hover {
+    cursor: pointer;
   }
+}
