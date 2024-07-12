@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Movies from './Movies'
 import Header from './Header'
 import Modal from './Modal'
-import {getAllMovies, getSingleMovie} from './APICalls'
+import {getAllMovies, getSingleMovie, getMovieDetails} from './APICalls'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -13,41 +13,8 @@ function App() {
   const [singleMovieDetails, setSingleMovieDetails] = useState(null)
   const [error, setError] = useState('')
   const movieIDs = [];
-  const searchedMovies = []
+  const searchedMovies = [];
   const filteredByGenre = [];
-  function getAllMovieIds(movies) {
-    movies.forEach(movie => {
-      movieIDs.push(movie.id)
-    })
-    return movieIDs
-  }
-
-  function getMovieDetails() {
-    const moviePromises = movieIDs.map(id => {
-    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-    .then(resp => resp.json())
-    .then(data => data.movie)
-    })
-    getSingleMovieDetails(moviePromises)
-
-  }
-
-  function getSingleMovieDetails(moviePromises) {
-    Promise.all(moviePromises)
-    .then(data => data.forEach(movie => {
-      movie.genres.forEach(genre => {
-        if (!filteredByGenre.includes(genre)) {
-            filteredByGenre.push(genre)
-        }
-        if (!searchedMovies[(movie.title)]) {
-          searchedMovies[(movie.title)] = []
-        }
-        searchedMovies[movie.title].push(genre)
-    })
-
-  }))
-
-  }
   useEffect(() => {
     getAllMovies()
     .then((response) => {
@@ -59,11 +26,57 @@ function App() {
         setMovies(data.movies)
         setFilteredMovies(data.movies)
         getAllMovieIds(data.movies)
-        getMovieDetails()
+        getSingleMovieDetails()
       })
       .catch(error => {
         setError(error.message)})
-      }, [])
+    }, [])
+  
+  function getAllMovieIds(movies) {
+    movies.forEach(movie => {
+      movieIDs.push(movie.id)
+    })
+    return movieIDs
+  }
+
+  function getSingleMovieDetails() {
+    const moviePromises = getMovieDetails(movieIDs)
+    Promise.all(moviePromises)
+    .then(data => {
+      data.forEach(movie => {
+        searchedMovies.push({[movie.title]:[]})
+        movie.genres.forEach(genre => {
+        if (!filteredByGenre.includes(genre)) {
+            filteredByGenre.push(genre)
+        }
+       })
+      })
+      data.forEach(movie => {
+        movie.genres.forEach(genre => {
+          searchedMovies.forEach(movieName => {
+          if (!movieName[movie.title].includes(genre)) {
+            movieName[movie.title].push(genre)
+          }
+        })
+        })
+      })
+      console.log("SEARCHED MOVIES: ", searchedMovies)
+    }
+    )
+  .catch(error => setError(error.message))
+}
+
+  function filterMoviesByGenre(genre) {
+    // console.log("GENRE CALLBACK FUNCTION: ", genre)
+    console.log("SEARCHED MOVIES CALLBACK: ", searchedMovies)
+    const genreMovies = [];
+    // filteredMovies.forEach(movie => {
+    //   if (movie.includes(genre)) {
+    //     genreMovies.push(movie)
+    //   }
+    // })
+    return genreMovies
+  }
   function updateSingleMovie(id) {
         getSingleMovie(id)
         .then(response => response.json())
@@ -81,7 +94,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            <Header movies={filteredMovies} updateMovies={updateMovies}/>
+            <Header movies={filteredMovies} updateMovies={updateMovies} filterMoviesByGenre={filterMoviesByGenre}/>
             {error && <h2>{error}</h2>}
             <Movies movies={movies} updateSingleMovie={updateSingleMovie}/>
           </>}>
