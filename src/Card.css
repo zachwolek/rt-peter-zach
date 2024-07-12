@@ -3,8 +3,8 @@
     background-color: rgb(var(--primary-color));
     border-radius: 1em;
     margin: 1em;
-    width: 12.5em;
-    height: 26.875em;
+    width: 21.875em;
+    height: 45.9375em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,29 +29,27 @@ div#red {
     width: 100%;
     margin: 0px;
     overflow: hidden;
-    transform: translateY(-3%);
+    transform: translateY(-9%);
 }
 
 .card h2 {
-    max-width: 100%;
+    max-width: 85%;
     height: 40px;
-    line-height: 20px;
-    font-size: 18px;
-    margin: 10px;
-    white-space: hidden;
-    overflow: hidden;
+    margin: 0 0 1.7em 0;
+    font-size: 1.7em;
+    transform: translateY(-70%);
     text-overflow: ellipsis;
 }
 
 .card p {
-    font-size: 15px;
-    margin: 0px 0;
+    font-size: 1.5em;
+    margin: 0px;
 }
 
 .card button {
     width: 100%;
-    margin: 0px;
-    margin-top: auto;
+    font-size: 1.2em;
+    margin-top: .4em;
 }
 button {
     cursor: pointer;
