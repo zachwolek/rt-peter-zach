@@ -8,10 +8,10 @@ nav {
     display: flex;
     justify-content: center; 
     align-items: center; 
+    border-bottom: 2px solid black;
   }
 
 .app-title {
-  /* position: absolute; */
   color: black;
   font-weight: bold;
   font-size: 3.125em;
@@ -19,13 +19,14 @@ nav {
 }
 
 .search-wrapper {
-  margin-left: 10em;
-  button:hover {
-    cursor: pointer;
+  margin-left: 11em;
+  input {
+    height: 2em;
+    width: 10em;
   }
 }
 
-@media screen and (max-width:25em) {
+@media screen and (max-width:33.4375em) {
   nav {
     justify-content: flex-start;
     align-items: none;

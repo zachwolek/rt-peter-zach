@@ -33,12 +33,13 @@ div#red {
 }
 
 .card h2 {
-    max-width: 85%;
+    max-width: 90%;
     height: 40px;
     margin: 0 0 1.7em 0;
     font-size: 1.7em;
     transform: translateY(-70%);
     text-overflow: ellipsis;
+    letter-spacing: 0.05em;
 }
 
 .card p {
