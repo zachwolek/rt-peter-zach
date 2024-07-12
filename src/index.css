@@ -4,6 +4,7 @@ body {
   font-family: 'Song Myung', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 13.125em;
 }
 
 code {
