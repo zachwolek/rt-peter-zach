@@ -12,32 +12,42 @@ function App() {
   const [filteredMovies, setFilteredMovies] = useState([])
   const [singleMovieDetails, setSingleMovieDetails] = useState(null)
   const [error, setError] = useState('')
-  // const movieIDs = [];
-  // function getAllMovieIds(movies) {
-  //   movies.forEach(movie => {
-  //     movieIDs.push(movie.id)
-  //   })
-  //   return movieIDs
-  // }
-  // function getMovieDetails() {
-  //   const searchedMovies = []
-  //   const filteredByGenre = [];
-  //   movieIDs.forEach(id => {
-  //     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //         data.genres.forEach(genre => {
-  //             if (!filteredByGenre.includes(genre)) {
-  //                 filteredByGenre.push(genre)
-  //             }
-  //         })
-  //         searchedMovies.push({[data.title]:data.genres})
-  //     })
-  //     })
-  //     console.log("SearchedMovies: ", searchedMovies)
-  //     console.log("FilteredByGenres: ", filteredByGenre)
-  // }
-  
+  const movieIDs = [];
+  const searchedMovies = []
+  const filteredByGenre = [];
+  function getAllMovieIds(movies) {
+    movies.forEach(movie => {
+      movieIDs.push(movie.id)
+    })
+    return movieIDs
+  }
+
+  function getMovieDetails() {
+    const moviePromises = movieIDs.map(id => {
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    .then(resp => resp.json())
+    .then(data => data.movie)
+    })
+    getSingleMovieDetails(moviePromises)
+
+  }
+
+  function getSingleMovieDetails(moviePromises) {
+    Promise.all(moviePromises)
+    .then(data => data.forEach(movie => {
+      movie.genres.forEach(genre => {
+        if (!filteredByGenre.includes(genre)) {
+            filteredByGenre.push(genre)
+        }
+        if (!searchedMovies[(movie.title)]) {
+          searchedMovies[(movie.title)] = []
+        }
+        searchedMovies[movie.title].push(genre)
+    })
+
+  }))
+
+  }
   useEffect(() => {
     getAllMovies()
     .then((response) => {
@@ -48,7 +58,8 @@ function App() {
       .then(data => {
         setMovies(data.movies)
         setFilteredMovies(data.movies)
-        // getAllMovieIds(data.movies)
+        getAllMovieIds(data.movies)
+        getMovieDetails()
       })
       .catch(error => {
         setError(error.message)})
