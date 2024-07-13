@@ -48,8 +48,3 @@ describe('Landing page tests', () => {
       cy.get('.card').should('have.css','width','800px')
     })
 })
-
-// it('starts with black background', () => {
-//     cy.visit('index.html')
-//     cy.get('body').should('have.css', 'background-color', 'rgb(0, 0, 0)')
-//   })
