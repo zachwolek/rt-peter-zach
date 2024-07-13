@@ -11,10 +11,11 @@ function App() {
   const [movies, setMovies] = useState([])
   const [filteredMovies, setFilteredMovies] = useState([])
   const [singleMovieDetails, setSingleMovieDetails] = useState(null)
+  const [moviesWithGenres, setMoviesWithGenres] = useState([])
+  const [allGenres, setAllGenres] = useState([])
   const [error, setError] = useState('')
   const movieIDs = [];
-  const searchedMovies = [];
-  const filteredByGenre = [];
+ 
   useEffect(() => {
     getAllMovies()
     .then((response) => {
@@ -39,42 +40,40 @@ function App() {
     return movieIDs
   }
 
-  function getSingleMovieDetails() {
+   function getSingleMovieDetails() {
+    const allTitlesGenres = {};
+    const genres = [];
     const moviePromises = getMovieDetails(movieIDs)
     Promise.all(moviePromises)
     .then(data => {
-      data.forEach(movie => {
-        searchedMovies.push({[movie.title]:[]})
+      data.forEach(movie => { 
+        if (!allTitlesGenres[movie.title]) {
+          allTitlesGenres[movie.title] = [];
+        }
         movie.genres.forEach(genre => {
-        if (!filteredByGenre.includes(genre)) {
-            filteredByGenre.push(genre)
+        if (!genres.includes(genre)) {
+            genres.push(genre)
+        }
+        if (!allTitlesGenres[movie.title].includes(genre)) {
+          allTitlesGenres[movie.title].push(genre)
         }
        })
       })
-      data.forEach(movie => {
-        movie.genres.forEach(genre => {
-          searchedMovies.forEach(movieName => {
-          if (!movieName[movie.title].includes(genre)) {
-            movieName[movie.title].push(genre)
-          }
-        })
-        })
-      })
-      console.log("SEARCHED MOVIES: ", searchedMovies)
+      setMoviesWithGenres(allTitlesGenres)
+      setAllGenres(genres)
     }
-    )
+  )
   .catch(error => setError(error.message))
 }
 
-  function filterMoviesByGenre(genre) {
-    // console.log("GENRE CALLBACK FUNCTION: ", genre)
-    console.log("SEARCHED MOVIES CALLBACK: ", searchedMovies)
+
+  function filterMoviesByGenre(input) {
     const genreMovies = [];
-    // filteredMovies.forEach(movie => {
-    //   if (movie.includes(genre)) {
-    //     genreMovies.push(movie)
-    //   }
-    // })
+    Object.keys(moviesWithGenres).forEach(movie => {
+      if (moviesWithGenres[movie].includes(input)) {
+        genreMovies.push(movie)
+      }
+    })
     return genreMovies
   }
   function updateSingleMovie(id) {
@@ -94,7 +93,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            <Header movies={filteredMovies} updateMovies={updateMovies} filterMoviesByGenre={filterMoviesByGenre}/>
+            <Header movies={filteredMovies} updateMovies={updateMovies} filterMoviesByGenre={filterMoviesByGenre} allGenres={allGenres}/>
             {error && <h2>{error}</h2>}
             <Movies movies={movies} updateSingleMovie={updateSingleMovie}/>
           </>}>
