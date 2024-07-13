@@ -1,15 +1,23 @@
 nav {
-    position:sticky;
-    top: 0;
-    z-index: 2;
-    min-width: 100%;
-    background-color: #f7ead9;
-    padding: 0;
+  position:sticky;
+  top: 0;
+  z-index: 2;
+  min-width: 100%;
+  background-color: #f7ead9;
+  padding: 0;
+  border-bottom: 2px solid black;
+}
+.filter-message {
+  font-size: 1.3em;
+  padding: 0;
+  margin: 0 0 0 7em;
+  transform: translateY(-20%)
+}
+.title-filter-wrapper {
     display: flex;
     justify-content: center; 
     align-items: center; 
-    border-bottom: 2px solid black;
-  }
+}
 
 .app-title {
   color: black;
@@ -21,9 +29,14 @@ nav {
 .search-wrapper {
   margin-left: 11em;
   input {
+    margin-left: 10px;
     height: 2em;
     width: 10em;
+    background: var(--background-color);
+    border: 1px solid black;
+    border-radius: 5px;
   };
+
 }
 
 .search-wrapper, .genre-wrapper {
@@ -31,8 +44,13 @@ nav {
 }
 
 .genre-wrapper select {
-    height: 2em;
-    width: 10em;
+  margin-left: 10px;
+    height: 2.4em;
+    width: 10.5em;
+    padding: 1px 2px;
+    background: var(--background-color);
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 @media screen and (max-width:33.4375em) {

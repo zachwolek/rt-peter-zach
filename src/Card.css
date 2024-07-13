@@ -29,7 +29,7 @@ div#red {
     width: 100%;
     margin: 0px;
     overflow: hidden;
-    transform: translateY(-9%);
+    transform: translateY(-4%);
 }
 
 .card h2 {
@@ -37,7 +37,7 @@ div#red {
     height: 2em;
     margin: 0 0 1em 0;
     font-size: 1.7em;
-    transform: translateY(-70%);
+    transform: translateY(-30%);
     text-overflow: ellipsis;
     letter-spacing: 0.05em;
 }

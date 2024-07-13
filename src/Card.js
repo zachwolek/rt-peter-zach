@@ -21,7 +21,6 @@ export default function Card({id, img, release_date, title, average_rating, upda
             <p className='average_rating'>Rating: {average_rating.toFixed(1)}/10</p>
             <Link to={`/${id}`}>
                 <button onClick={()=> {
-                    console.log("ID CLICK", id)
                     updateSingleMovie(id)
                 }}>See Movie Details</button>
             </Link>
