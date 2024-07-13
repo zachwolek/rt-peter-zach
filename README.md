@@ -18,7 +18,8 @@ For Testing:
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-![Filter By Title](https://imgur.com/a/du9gWbl)
+![Filter By Title](!(https://github.com/user-attachments/assets/504c0d16-e749-4998-afdd-286dfc7b8cd6)
+)
 The app has a live search function to filter movies based on inclusion of title. 
 
 As can also be seen in this screenshot, the border of each movie presented is dependant on movie review. (Under 4: Red, 4 to under 7: Yellow, 7+: Green)
