@@ -23,7 +23,7 @@ export default function Modal({singleMovieDetails}){
             <div className='image-button-wrapper'>
                 <img src={backdrop_path} alt={altText}/>
                 <Link to='/'>
-                    <button className='button-close' data-close modal formmethod='dialog' autofocus>X</button>
+                    <button className='button-close' data-close modal formmethod='dialog' autofocus>Return to Main</button>
                 </Link>
             </div>
             <div className='title-genre-wrapper'>
