@@ -23,7 +23,16 @@ nav {
   input {
     height: 2em;
     width: 10em;
-  }
+  };
+}
+
+.search-wrapper, .genre-wrapper {
+  padding: 6px;
+}
+
+.genre-wrapper select {
+    height: 2em;
+    width: 10em;
 }
 
 @media screen and (max-width:33.4375em) {
