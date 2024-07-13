@@ -41,38 +41,6 @@
           "release_date": "2022-11-04"
       },
       {
-          "id": 829799,
-          "poster_path": "https://image.tmdb.org/t/p/original//xdmmd437QdjcCls8yCQxrH5YYM4.jpg",
-          "backdrop_path": "https://image.tmdb.org/t/p/original//au4HUSWDRadIcl9CqySlw1kJMfo.jpg",
-          "title": "Paradise City",
-          "average_rating": 1,
-          "release_date": "2022-11-11"
-      },
-      {
-          "id": 972313,
-          "poster_path": "https://image.tmdb.org/t/p/original//fHQHC32dhom8u0OxC2hs2gYQh0M.jpg",
-          "backdrop_path": "https://image.tmdb.org/t/p/original//s65RPy7DiBS4PXvUR3fiTw5f725.jpg",
-          "title": "Blowback",
-          "average_rating": 2,
-          "release_date": "2022-06-17"
-      },
-      {
-          "id": 882598,
-          "poster_path": "https://image.tmdb.org/t/p/original//aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg",
-          "backdrop_path": "https://image.tmdb.org/t/p/original//olPXihyFeeNvnaD6IOBltgIV1FU.jpg",
-          "title": "Smile",
-          "average_rating": 8,
-          "release_date": "2022-09-23"
-      },
-      {
-          "id": 830784,
-          "poster_path": "https://image.tmdb.org/t/p/original//irIS5Tn3TXjNi1R9BpWvGAN4CZ1.jpg",
-          "backdrop_path": "https://image.tmdb.org/t/p/original//c1bz69r0v065TGFA5nqBiKzPDys.jpg",
-          "title": "Lyle, Lyle, Crocodile",
-          "average_rating": 8,
-          "release_date": "2022-10-07"
-      },
-      {
           "id": 982620,
           "poster_path": "https://image.tmdb.org/t/p/original//pwf3DGuWB1AptvIzHhlGxDUNnQX.jpg",
           "backdrop_path": "https://image.tmdb.org/t/p/original//jHKNqz0LjM2dOUv5XDPmcSoYPEW.jpg",

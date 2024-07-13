@@ -2,14 +2,37 @@ describe('Landing page tests', () => {
   beforeEach(() => {
     cy.fixture('mockMovieData').then((json) => {
       cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', json)
-
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270',{
+        statusCode: 200,
+        fixture: 'mockFirstSingleMovieDetails.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/982620',{
+        statusCode: 200,
+        fixture: 'mockLastSinglemovieData.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495',{
+        statusCode: 200,
+        fixture: 'theWomanKing.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/1013860',{
+        statusCode: 200,
+        fixture: 'RIPD2.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/505642',{
+        statusCode: 200,
+        fixture: 'wakandaForever.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/934641',{
+        statusCode: 200,
+        fixture: 'wakeUpDead.json'
+      })
     })
     .viewport(1280,800)
     .visit('http://localhost:3000')
   })
   it('should display all movies on the loading page', () => {
     cy.get('.app-title').contains('Rancid Tomatillos')
-    .get('.movies-wrapper').get('.card').should('have.length', 10)
+    .get('.movies-wrapper').get('.card').should('have.length', 6)
     .get('.card').first().should('contain.text', "Black Adam")
     .get('.card').last().should('contain.text', "Maneater")
   })
