@@ -2,17 +2,36 @@ describe('Single movie details tests', () => {
   beforeEach(() => {
     cy.fixture('mockMovieData').then((json) => {
       cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', json)
-
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270',{
+        statusCode: 200,
+        fixture: 'mockFirstSingleMovieDetails.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/982620',{
+        statusCode: 200,
+        fixture: 'mockLastSinglemovieData.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/724495',{
+        statusCode: 200,
+        fixture: 'theWomanKing.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/1013860',{
+        statusCode: 200,
+        fixture: 'RIPD2.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/505642',{
+        statusCode: 200,
+        fixture: 'wakandaForever.json'
+      })
+      cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/934641',{
+        statusCode: 200,
+        fixture: 'wakeUpDead.json'
+      })
     })
     .viewport(1280,800)
     .visit('http://localhost:3000')
   })
   it('should take the user to the first single movie details page and update the URL', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270',{
-      statusCode: 200,
-      fixture: 'mockFirstSingleMovieDetails.json'
-    })
-    .get('.card button').first().click()
+    cy.get('.card button').first().click()
 
     .get('h2').should('contain.text', 'Black Adam')
     .get('.genres').get('.genre').should('have.length', 3).should('contain.text', "Action").should('contain.text', "Fantasy").should('contain.text', "Science Fiction")
@@ -20,11 +39,7 @@ describe('Single movie details tests', () => {
     .url().should('include', '436270')
   })
   it('should take the user to the last single movie details page and update the URL', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/982620',{
-      statusCode: 200,
-      fixture: 'mockLastSinglemovieData.json'
-    })
-    .get('.card button').last().click()
+    cy.get('.card button').last().click()
     .get('h2').should('contain.text', 'Maneater')
     .get('.genres').get('.genre').should('have.length', 2).should('contain.text', "Thriller").should('contain.text', "Horror")
     .get('.overview').should('contain.text', 'A group of friends on vacation in a seeming island paradise are stalked by an unrelenting great white after an accident leaves them stranded and left for dead.')
@@ -38,16 +53,12 @@ describe('Single movie details tests', () => {
     .get('.card button').first().click()
     .get('.button-close').click()
     .get('.app-title').contains('Rancid Tomatillos')
-    .get('.movies-wrapper').get('.card').should('have.length', 10)
+    .get('.movies-wrapper').get('.card').should('have.length', 6)
   })
-  it.only('user should be able to use forward/back navigation', () => {
-    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/982620',{
-      statusCode: 200,
-      fixture: 'mockLastSinglemovieData.json'
-    })
-    .get('.card button').last().click()
+  it('should be able to use forward/back navigation', () => {
+    cy.get('.card button').last().click()
     .go("back")
-    .get('.movies-wrapper').get('.card').should('have.length', 10)
+    .get('.movies-wrapper').get('.card').should('have.length', 6)
     .go("forward")
     .get('h2').should('contain.text', 'Maneater')
     .get('.genres').get('.genre').should('have.length', 2).should('contain.text', "Thriller").should('contain.text', "Horror")
