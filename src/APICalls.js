@@ -14,9 +14,13 @@ function getMovieDetails(movieIDs) {
     })
     return moviePromises
   }
-
+function getMovieTrailer(id) {
+    return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}/videos`)
+    .then(resp => resp.json())
+}
 export {
     getAllMovies,
     getSingleMovie,
-    getMovieDetails
+    getMovieDetails,
+    getMovieTrailer
 }

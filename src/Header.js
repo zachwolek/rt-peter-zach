@@ -42,23 +42,26 @@ export default function Header({movies, updateMovies, filterMoviesByGenre, allGe
     return (
         <>
         <nav>
+            <div className='title-filter-wrapper'>
             <h1 className='app-title'>Rancid Tomatillos</h1>
             <div className='search-wrapper'>Search By Title: 
                 <input placeholder='Search'className='search' value={searchValue} 
                 onChange={(e) => setSearchValue(e.target.value)}></input>
             </div>
             <div className='genre-wrapper'>
-                <label for="genres">Search By Genre:</label>
+                <label htmlFor="genres">Search By Genre:</label>
                 <select id="genres" name="genres"  value={selectionValue} 
                 onChange={(e) => setSelectionValue(e.target.value)}>
                     <option value=''>View All</option>
                     {selectionGenres}
                 </select>
+                </div>
             </div>
+            {(searchValue && selectionValue) && <p className='filter-message'>Filtering by:&nbsp;&nbsp;[Genre: <strong>{selectionValue}</strong> &nbsp; Title: <strong>{searchValue}</strong>]</p>}
+            {(searchValue && !selectionValue) && <p className='filter-message'>Filtering by:&nbsp;&nbsp;[Title: <strong>{searchValue}</strong>]</p>}
+            {(!searchValue && selectionValue) && <p className='filter-message'>Filtering by:&nbsp;&nbsp;[Genre: <strong>{selectionValue}</strong>]</p>}
         </nav>
-        {(searchValue && selectionValue) && <p>Filtered by:&nbsp;&nbsp;[Genre: <strong>{selectionValue}</strong> &nbsp; Title: <strong>{searchValue}</strong>]</p>}
-        {(searchValue && !selectionValue) && <p>Filtered by:&nbsp;&nbsp;[Title: <strong>{searchValue}</strong>]</p>}
-        {(!searchValue && selectionValue) && <p>Filtered by:&nbsp;&nbsp;[Genre: <strong>{selectionValue}</strong>]</p>}
+      
         </>
     )
 }
