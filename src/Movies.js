@@ -22,15 +22,12 @@ export default function Movies({movies, toggleOpen, updateSingleMovie}) {
 }
 
 Movies.propTypes = {
-  id: PropTypes.number.isRequired,
-  poster_path: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
-  average_rating: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    average_rating: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+  })),
   updateSingleMovie: PropTypes.func.isRequired
 }
-//const [viewstate, setViewstate] = useState(false)
-//When "View Movie Details button is clicked"
-  //viewstate === true && id gets passed to 'find' 
-//{viewstate && <div>Movie Details</div>}
-//Go back button sets viewstate as false 

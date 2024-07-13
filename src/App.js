@@ -96,6 +96,7 @@ function App() {
             <Header movies={filteredMovies} updateMovies={updateMovies} filterMoviesByGenre={filterMoviesByGenre} allGenres={allGenres}/>
             {error && <h2>{error}</h2>}
             <Movies movies={movies} updateSingleMovie={updateSingleMovie}/>
+            {movies.length === 0 && <h2 className='no-movies'>No movies matched your selected title or genre..</h2>}
           </>}>
         </Route>
         <Route path='/:movie_id' element={<Modal singleMovieDetails={singleMovieDetails}/>}></Route>

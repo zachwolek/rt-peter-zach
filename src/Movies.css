@@ -13,6 +13,12 @@
         .card {
             width: 26.25em;
             height: 55.125em;
+            h2 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1.75em;
+            }
         }
     }
 }
@@ -23,6 +29,9 @@
         .card {
             width: 32.5em;
             height: 66.15em;
+            h2 {
+                font-size: 2.2em;
+            }
         }
     }
 }
@@ -32,6 +41,9 @@
         .card {
             width: 50em;
             height: 101em;
+            h2 {
+                font-size: 3em;
+            }
         }
     }
 }

@@ -61,12 +61,15 @@ export default function Modal({singleMovieDetails}){
 }
 
 Modal.propTypes = {
-    title: PropTypes.string.isRequired,
-    backdrop_path: PropTypes.string.isRequired,
-    overview: PropTypes.string.isRequired,
-    genres: PropTypes.array.isRequired,
-    budget: PropTypes.number.isRequired,
-    revenue: PropTypes.number.isRequired,
-    runtime: PropTypes.number.isRequired,
-    average_rating: PropTypes.number.isRequired,
+    singleMovieDetails: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        backdrop_path: PropTypes.string.isRequired,
+        overview: PropTypes.string.isRequired,
+        genres: PropTypes.array.isRequired,
+        budget: PropTypes.number.isRequired,
+        revenue: PropTypes.number.isRequired,
+        runtime: PropTypes.number.isRequired,
+        average_rating: PropTypes.number.isRequired,
+    })
+    
 }
