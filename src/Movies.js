@@ -1,7 +1,7 @@
 import Card from './Card'
 import './Movies.css'
 import PropTypes from 'prop-types'
-export default function Movies({movies, toggleOpen, updateSingleMovie}) {
+export default function Movies({movies, updateSingleMovie}) {
     const allMovies = movies.map(({id, poster_path, release_date,title, average_rating}) => {
     return <Card
     key={id}
@@ -10,7 +10,6 @@ export default function Movies({movies, toggleOpen, updateSingleMovie}) {
     release_date={release_date}
     title={title}
     average_rating={average_rating}
-    toggleOpen={toggleOpen}
     updateSingleMovie={updateSingleMovie}
     />
   })

@@ -31,7 +31,7 @@ export default function Modal({singleMovieDetails}){
     function openModal() {
         setModal(true)
     }
-    const {title, backdrop_path, release_date, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
+    const {title, backdrop_path, overview ,genres, budget, revenue, runtime, average_rating} = singleMovieDetails
     const shortRevenue = revenue.toString().slice(0,3)
     const shortBudget = budget.toString().slice(0,3)
     const altText = 'Poster of ' + title
@@ -46,7 +46,7 @@ export default function Modal({singleMovieDetails}){
             <div className='image-button-wrapper'>
                 <img src={backdrop_path} alt={altText}/>
                 <Link to='/'>
-                    <button className='button-close' formMethod='dialog' autoFocus>Return to Main</button
+                    <button className='button-close' formMethod='dialog' autoFocus>Return to Main</button>
                 </Link>
             </div>
             <div className='title-genre-wrapper'>
@@ -65,7 +65,7 @@ export default function Modal({singleMovieDetails}){
                             <dialog ref={ref} onCancel={closeModal} className='trailer-modal'>
                                 <button className='trailer-close-btn' onClick={closeModal}>Close</button>
                                 <iframe src={trailerURL} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                frameBorder='0' allowFullScreen title={title}></iframe>
+                                 allowFullScreen title={title}></iframe>
                             </dialog>
                    
                         </div>
